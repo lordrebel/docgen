@@ -1,0 +1,10 @@
+@startuml
+start
+:开始;
+if (条件判断) then (是)
+  :执行操作A;
+else (否)
+  :执行操作B;
+endif
+stop
+@enduml

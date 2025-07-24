@@ -1,0 +1,5 @@
+@startuml
+Alice -> Bob: 你好，Bob！
+Bob --> Alice: 你好，Alice！最近怎么样？
+Alice -> Bob: 一切都好，谢谢关心。
+@enduml

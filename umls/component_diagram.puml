@@ -1,0 +1,50 @@
+@startuml
+!define RECTANGLE class
+left to right direction
+
+skinparam rectangle {
+    BackgroundColor White
+    BorderColor Black
+}
+
+skinparam component {
+    BackgroundColor Yellow
+    BorderColor Black
+}
+
+
+    component aic as "aic"
+    rectangle "gen_model_io" as gen_model
+    rectangle "ais" as ais
+    rectangle "task_gen" as task_gen
+    rectangle "fpga" as fpga
+    
+    () "sv.json" as sv_json
+    () "in_data" as in_data
+    () "tasklist" as tasklist
+    () "out_data1" as out_data1
+    () "out_data2" as out_data2
+    () "out_data3" as out_data3
+
+
+rectangle "进制比对" as compare
+
+' 连接关系
+sv_json --> gen_model : sv.json
+sv_json --> aic : sv.json
+gen_model --> out_data1 : out_data1
+gen_model --> in_data : in_data
+
+aic --> task_gen : tlf
+
+task_gen --> ais
+ais --> out_data2 : out_data2
+
+tasklist --> fpga : tasklist
+fpga --> out_data3 : out_data3
+
+out_data1 --> compare
+out_data2 --> compare
+out_data3 --> compare
+
+@enduml

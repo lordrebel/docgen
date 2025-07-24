@@ -1,0 +1,25 @@
+@startuml
+' 定义一个类 Car
+class Car {
+  +start()
+  +stop()
+  -engine: Engine
+}
+
+' 定义另一个类 Engine
+class Engine {
+  +power: int
+  +start()
+}
+
+' Car 依赖 Engine（组合关系）
+Car --> Engine : uses >
+
+' 定义一个接口 Vehicle
+interface Vehicle {
+  +drive()
+}
+
+' Car 实现 Vehicle 接口
+Car ..|> Vehicle
+@enduml
